@@ -63,5 +63,12 @@ function getmealsdata(){
 	
 }
 
+function deletemeals($id){
+	
+	$fp4 = connectdb();
+	$sql = "DELETE FROM `meals` WHERE `id`='".$id."' limit 1";
+	echo $sql;
+	mysqli_query($fp4, $sql);
+}
 
 ?>

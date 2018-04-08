@@ -12,10 +12,9 @@ if (isset($_REQUEST['logout']) == 'goodmeals') {
   unset($_SESSION['emp']);
   //header('Location:  http://localhost/goodmeals/index.php');
 }
-
-if(isset($_REQUEST['submit']) == 'Submit'){
-
-    
+ 
+if(isset($_REQUEST['submit']) == 'DELETE'){
+	 deletemeals($_REQUEST['delmeal']);
 }
 
 ?>
@@ -71,7 +70,7 @@ border-radius: 20px;
 
 	function submitResult() {
 	  
-	   if ( confirm('Are you sure you want to Submit ?') == false ) {
+	   if ( confirm('Are you sure you want to DELETE ?') == false ) {
 		  return false ;
 	   } else {
 		  var x = checkvalidity(); 
@@ -188,8 +187,11 @@ border-radius: 20px;
 		echo "<td>".$val['mealorigin']."</td>";
 		echo "<td> ".$mealtype[strtolower($val['sku'])]."</td>";  
 		echo "<td>".$val['price']."</td>";
-		echo "<td><img src='".$val['imageurl']."'/>";
-		echo "<td> <button class='btn btn-success onClick='detetemeal('".$val['id']."')'> DELETE </button>'</td>";
+		echo "<td><img style='width:90px;'src='".$val['imageurl']."'/>";
+		echo "<td> <form action='#' method='POST' name='deleteform'>
+				   <input type='hidden' value='".$val['id']."' name='delmeal'>
+				   <input class='btn btn-success onClick='submitResult()' type='submit' name='submit' value='DELETE'>
+				   </td>";
 		echo "</tr>";
 								}//End for
 	?> 
