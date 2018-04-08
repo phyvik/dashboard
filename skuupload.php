@@ -1,16 +1,16 @@
 <?php
 
-include_once('database.php');
+include_once('/home/ubuntu/includes/dashboarddb.php');
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 
 if (isset($_SESSION['emp']) != 'goodmeals') {
- // header('Location: http://localhost/goodmeals/index.php');
+ header('Location: http://goodmeals.in/dashboard/index.php');
 }
 
 if (isset($_REQUEST['logout']) == 'goodmeals') {
   unset($_SESSION['emp']);
- // header('Location:  http://localhost/goodmeals/index.php');
+  header('Location:  http://goodmeals.in/dashboard/index.php');
 }
 
 if(isset($_REQUEST['submit']) == 'Submit'){
@@ -25,11 +25,11 @@ if(isset($_REQUEST['submit']) == 'Submit'){
   $data['vid'] = $_REQUEST['vendor'];
   $data['mealorigin'] = $_REQUEST['meals_origin'];
   $data['price'] = $_REQUEST['price'];
-  $data['imageurl'] = "http://$_SERVER[HTTP_HOST]/goodmeals/uploads/".$_FILES['mealimage']['name'];
+  $data['imageurl'] = "http://$_SERVER[HTTP_HOST]/uploads/".$_FILES['mealimage']['name'];
 
   insertskumeal($data);
 
-  $target_dir = './uploads/';
+  $target_dir = '../uploads/';
   $target_file = $target_dir . basename($_FILES['mealimage']['name']);
   $uploadOk = 1;
 
