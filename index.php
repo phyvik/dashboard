@@ -1,21 +1,21 @@
 <?php 
-ini_set("display_errors", "1");
-error_reporting(E_ALL);
+//ini_set("display_errors", "1");
+//error_reporting(E_ALL);
 
 if(isset($_SESSION['emp']) == "goodmeals"){
 	$_SESSION['emp'] = "goodmeals"; 
-	header("Location: http://localhost/goodmeals/skuupload.php");
+	header("Location: http://goodmeals.in/dashboard/skuupload.php");
 }
 
 if(isset($_REQUEST['submit']) == "Login"){ 
 	if($_REQUEST['uname'] == "goodmeals" && $_REQUEST['password'] == "secret123"){
 		$_SESSION['emp'] = "goodmeals";
-		header("Location: http://localhost/goodmeals/skuupload.php");		 
+		header("Location: http://goodmeals.in/dashboard/skuupload.php");		 
 	}
 } 
 if(isset($_GET['logout'])==1){
 	unset($_SESSION['emp']);
-	header('Location:  http://localhost/goodmeals/index.php');
+	header('Location:  http://goodmeals.in/dashboard/index.php');
 }
  
 ?>
