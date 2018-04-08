@@ -1,16 +1,16 @@
 <?php
 
-include_once('database.php');
+include_once('/home/ubuntu/webhooks/dashboarddb.php');
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 
 if (isset($_SESSION['emp']) != 'goodmeals') {
-  //header('Location: http://localhost/goodmeals/index.php');
+  header('Location: http://goodmeals.in/dashboard/index.php');
 }
 
 if (isset($_REQUEST['logout']) == 'goodmeals') {
   unset($_SESSION['emp']);
-  //header('Location:  http://localhost/goodmeals/index.php');
+  header('Location:  http://goodmeals.in/dashboard/index.php');
 }
  
 if(isset($_REQUEST['submit']) == 'DELETE'){
