@@ -41,6 +41,27 @@ function insertskumeal($data){
 	mysqli_query($fp2, $sql);	
 }
 
+function getmealsdata(){
+	$fp3 = connectdb();
+	$sql = "SELECT * FROM `meals` WHERE createdon > CURDATE()";
+	$res = mysqli_query($fp3, $sql);
+	if($res){
+		$i=0;
+      while($row = mysqli_fetch_assoc($res)){
+         $mlist[$i]['id'] = $row['id'];
+         $mlist[$i]['sku'] = $row['sku'];
+         $mlist[$i]['mealtype'] = $row['mealtype'];
+         $mlist[$i]['meal'] = $row['meal'];
+         $mlist[$i]['vendorId'] = $row['vendorId'];
+         $mlist[$i]['mealorigin'] = $row['mealorigin'];
+         $mlist[$i]['price'] = $row['price'];
+         $mlist[$i]['imageurl'] = $row['imageurl']; 
+		 $i++;
+      }
+   }
+   return $mlist;
+	
+}
 
 
 ?>
